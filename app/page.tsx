@@ -26,6 +26,7 @@ export default async function Home() {
           content={post.text}
           avatar={post.author.avatar}
           postID={post.id}
+          key={post.id}
         />
       ))}
     </div>
