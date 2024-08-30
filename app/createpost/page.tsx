@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { useUser } from '@clerk/nextjs'
 
 const Page = () => {
   const [text, setText] = useState("");
+  const { user } = useUser()
 
   const handlePost = () => {
-    console.log(text);
+    // console.log(text);
+    // console.log(user?.fullName)
   };
 
   return (
