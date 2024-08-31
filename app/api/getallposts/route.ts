@@ -1,3 +1,5 @@
+export const dynamic = 'force-static'
+
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
