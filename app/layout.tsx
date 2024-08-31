@@ -34,7 +34,6 @@ export default function RootLayout({
             </div>
           </SignedOut>
           <SignedIn>
-            {/* <UserButton /> */}
             {children}
             <Footer />
           </SignedIn>

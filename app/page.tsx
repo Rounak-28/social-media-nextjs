@@ -29,6 +29,8 @@ export default async function Home() {
           key={post.id}
         />
       ))}
+      {/* just giving some margin at the bottom hehe */}
+      <div className="h-12 bg-red-200"></div>
     </div>
   );
 }
