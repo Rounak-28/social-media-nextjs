@@ -2,15 +2,24 @@
 
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { useUser } from '@clerk/nextjs'
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
   const [text, setText] = useState("");
-  const { user } = useUser()
 
-  const handlePost = () => {
-    // console.log(text);
-    // console.log(user?.fullName)
+  const handlePost = async () => {
+    const res = await fetch("/api/createpost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+      }),
+    });
+    router.push("/");
+    router.refresh();
   };
 
   return (
