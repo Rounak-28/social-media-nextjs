@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React from "react";
+import { formatDistance } from 'date-fns'
 
-const Post = ({ profileName, userName, time, content, avatar, image, postID }: any) => {
+const Post = ({ profileName, userName, createdAt, content, avatar, image, postID }: any) => {
+  const time = formatDistance(new Date(createdAt), new Date(), { addSuffix: true })
   return (
     <div className="max-w-xl mx-auto p-4 bg-white border border-gray-300 rounded-lg shadow-sm">
       <div className="flex items-start">
