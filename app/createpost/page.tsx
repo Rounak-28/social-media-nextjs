@@ -7,8 +7,10 @@ import { useRouter } from "next/navigation";
 const Page = () => {
   const router = useRouter();
   const [text, setText] = useState("");
+  const [isPosting, setIsPosting] = useState(false);
 
   const handlePost = async () => {
+    setIsPosting(true);
     const res = await fetch("/api/createpost", {
       method: "POST",
       headers: {
@@ -27,10 +29,11 @@ const Page = () => {
       <div className="header w-full h-12 flex items-center justify-between border-b border-gray-300">
         <FaArrowLeft className="w-10 h-10 p-2" />
         <button
-          className="bg-blue-500 m-2 text-white w-16 h-8 rounded-full"
+          className="bg-blue-500 m-2 text-white w-24 h-10 rounded-full"
+          disabled={isPosting}
           onClick={handlePost}
         >
-          Post
+          {isPosting ? "posting..." : "post"}
         </button>
       </div>
       <div className="flex justify-center pt-4">

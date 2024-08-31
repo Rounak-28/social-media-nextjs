@@ -2,12 +2,12 @@ import Comments from "@/components/Comments";
 import Post from "@/components/Post";
 import { headers } from "next/headers";
 
-async function getData(postID: string) {
+async function getData(postid: string) {
   const host = headers().get("host");
   const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
 
   const response = await fetch(
-    `${protocal}://${host}/api/getsinglepost/${postID}`
+    `${protocal}://${host}/api/getsinglepost/${postid}`
   );
   return response.json();
 }
