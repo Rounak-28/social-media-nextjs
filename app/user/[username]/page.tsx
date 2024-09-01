@@ -1,5 +1,7 @@
 import Post from "@/components/Post";
 import { headers } from "next/headers";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 async function getData(username: string) {
   const host = headers().get("host");
@@ -15,7 +17,18 @@ const Page = async ({ params }: { params: { username: string } }) => {
   const data = await getData(params.username);
   return (
     <div className="min-h-screen">
-      <header className="relative h-44">
+      <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2">
+        <Link href={"/"}>
+          <FaArrowLeft className="w-10 h-10 p-2" />
+        </Link>
+        <div className="flex flex-col">
+          <p className="font-semibold">
+            {data.firstname} {data.lastname}
+          </p>
+          <p className="text-sm text-gray-600">{data.posts.length} posts</p>
+        </div>
+      </div>
+      <header className="relative h-40">
         <img
           src="http://via.placeholder.com/800x300"
           alt="Header"
@@ -63,6 +76,8 @@ const Page = async ({ params }: { params: { username: string } }) => {
           key={post.id}
         />
       ))}
+      {/* just giving some margin at the bottom hehe */}
+      <div className="h-10"></div>
     </div>
   );
 };

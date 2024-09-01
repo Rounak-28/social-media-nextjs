@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Page = () => {
   const router = useRouter();
@@ -27,7 +28,9 @@ const Page = () => {
   return (
     <>
       <div className="header w-full h-12 flex items-center justify-between border-b border-gray-300">
-        <FaArrowLeft className="w-10 h-10 p-2" />
+        <Link href={"/"}>
+          <FaArrowLeft className="w-10 h-10 p-2" />
+        </Link>
         <button
           className="bg-blue-500 m-2 text-white w-24 h-10 rounded-full"
           disabled={isPosting}
