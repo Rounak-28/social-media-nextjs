@@ -1,5 +1,5 @@
-import Comments from "@/components/Comments";
 import Post from "@/components/Post";
+import Replies from "@/components/Replies";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
@@ -14,7 +14,7 @@ async function getData(postid: string) {
   return response.json();
 }
 
-const comments = [
+const replies = [
   {
     author: "John Doe",
     text: "This is a great post! Thanks for sharing.",
@@ -46,14 +46,14 @@ export default async function Page({ params }: { params: { postid: string } }) {
         avatar={post.author.avatar}
         postID={post.id}
       />
-      <div className="text-center p-2">Comments</div>
+      <div className="text-center p-2">Replies</div>
       <div className="max-w-xl mx-auto">
-        {comments.map((comment, index) => (
-          <Comments
+        {replies.map((replies, index) => (
+          <Replies
             key={index}
-            author={comment.author}
-            text={comment.text}
-            time={comment.time}
+            author={replies.author}
+            text={replies.text}
+            time={replies.time}
           />
         ))}
       </div>

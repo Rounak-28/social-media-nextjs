@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comments = ({ author, text, time }: any) => {
+const Replies = ({ author, text, time }: any) => {
   return (
     <div className="flex items-start p-4 border-b border-gray-200">
       {/* Profile Picture */}
@@ -27,4 +27,4 @@ const Comments = ({ author, text, time }: any) => {
   );
 };
 
-export default Comments;
+export default Replies;
