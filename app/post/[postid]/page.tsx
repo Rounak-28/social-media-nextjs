@@ -1,6 +1,8 @@
 import Comments from "@/components/Comments";
 import Post from "@/components/Post";
 import { headers } from "next/headers";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 async function getData(postid: string) {
   const host = headers().get("host");
@@ -30,6 +32,12 @@ export default async function Page({ params }: { params: { postid: string } }) {
   // console.log(data);
   return (
     <div>
+      <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2">
+        <Link href={"/"}>
+          <FaArrowLeft className="w-10 h-10 p-2" />
+        </Link>
+        <p className="text-lg font-semibold p-1">Post</p>
+      </div>
       <Post
         profileName={`${post.author.firstname} ${post.author.lastname}`}
         userName={post.author.username}
