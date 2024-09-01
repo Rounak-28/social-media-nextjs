@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
-export const SearchTerm = ({ text }: { text: string }) => {
+const SearchTerm = ({ text }: { text: string }) => {
   return (
     <div className="flex items-center space-x-4 h-12 px-4 relative border-b">
       <FaSearch className="text-2xl" />
