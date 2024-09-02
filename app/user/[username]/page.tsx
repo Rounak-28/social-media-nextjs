@@ -67,12 +67,13 @@ const Page = async ({ params }: { params: { username: string } }) => {
 
       {data.posts.map((post: any) => (
         <Post
-          profileName={`${data.firstname} ${data.lastname}`}
-          userName={data.username}
+          firstname={data.firstname}
+          lastname={data.lastname}
+          username={data.username}
           createdAt={post.createdAt}
           text={post.text}
           avatar={data.avatar}
-          postID={post.id}
+          id={post.id}
           key={post.id}
         />
       ))}

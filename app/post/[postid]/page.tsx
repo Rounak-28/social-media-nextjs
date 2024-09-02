@@ -39,12 +39,13 @@ export default async function Page({ params }: { params: { postid: string } }) {
         <p className="text-lg font-semibold p-1">Post</p>
       </div>
       <Post
-        profileName={`${post.author.firstname} ${post.author.lastname}`}
-        userName={post.author.username}
+        firstname={post.author.firstname}
+        lastname={post.author.lastname}
+        username={post.author.username}
         createdAt={post.createdAt}
         text={post.text}
         avatar={post.author.avatar}
-        postID={post.id}
+        id={post.id}
       />
       <div className="text-center p-2">Replies</div>
       <div className="max-w-xl mx-auto">

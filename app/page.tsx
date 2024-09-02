@@ -20,12 +20,13 @@ export default async function Home() {
       <CreatePostButton />
       {posts.map((post: any) => (
         <Post
-          profileName={`${post.author.firstname} ${post.author.lastname}`}
-          userName={post.author.username}
+          firstname={post.author.firstname}
+          lastname={post.author.lastname}
+          username={post.author.username}
           createdAt={post.createdAt}
           text={post.text}
           avatar={post.author.avatar}
-          postID={post.id}
+          id={post.id}
           key={post.id}
         />
       ))}
