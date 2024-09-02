@@ -33,8 +33,8 @@ export default async function Page({ params }: { params: { query: string } }) {
         </button>
       </div>
       <hr />
-      <div className="posts px-4 py-1">
-        <p className="text-lg font-semibold">Posts</p>
+      <div className="posts px-2 py-1">
+        <p className="text-lg font-semibold px-2">Posts</p>
         <div className="posts space-y-2">
           {data.posts.map((post: any) => (
             <Post

@@ -35,12 +35,12 @@ const Post = ({
             </div>
           </Link>
           <Link href={`/post/${postID}`}>
-            <pre className="mt-2 text-gray-800">{text}</pre>
+            <p className="whitespace-pre-wrap mt-2 text-gray-800">{text}</p>
             {image && (
               <img src={image} alt="Post content" className="mt-4 rounded-lg" />
             )}
           </Link>
-          <div className="flex justify-between mt-4 text-gray-500">
+          <div className="flex justify-between mt-0 text-gray-500">
             {/* place for buttons */}
           </div>
         </div>
