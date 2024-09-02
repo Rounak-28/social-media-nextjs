@@ -1,23 +1,23 @@
 const User = ({
-  name,
+  firstname,
+  lastname,
   username,
+  avatar,
   bio,
 }: {
-  name: string;
+  firstname: string;
+  lastname: string;
   username: string;
+  avatar: string;
   bio: string;
 }) => {
   return (
     <div className="max-w-md mx-auto p-4 rounded-lg border-[1px] my-2">
       <div className="flex items-center space-x-4">
-        <img
-          src="http://via.placeholder.com/200"
-          alt="idk"
-          className="w-12 h-12 rounded-full"
-        />
+        <img src={avatar} alt="avatar" className="w-12 h-12 rounded-full" />
         <div>
           <div className="flex items-center space-x-2">
-            <h4 className="font-bold">{name}</h4>
+            <h4 className="font-bold">{firstname + " " + lastname}</h4>
           </div>
           <p className="text-gray-400 text-sm">@{username}</p>
         </div>

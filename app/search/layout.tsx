@@ -14,7 +14,6 @@ export default function Layout({
   const [searchText, setSearchText] = useState("");
 
   const hanldeSearch = () => {
-    console.log(searchText);
     router.push(`/search/${searchText}`);
   };
   return (
