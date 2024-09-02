@@ -8,8 +8,21 @@ export async function GET(
   const query = params.query.split(" ").join(" | ");
 
   const posts = await prisma.post.findMany({
-    where: { text: { search: query } },
-    include: { author: true },
+    where: {
+      OR: [
+        { text: { search: query } },
+        {
+          author: {
+            firstname: { search: query },
+            lastname: { search: query },
+            username: { search: query },
+          },
+        },
+      ],
+    },
+    include: {
+      author: true,
+    },
   });
 
   const users = await prisma.user.findMany({

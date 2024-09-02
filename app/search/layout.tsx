@@ -28,6 +28,7 @@ export default function Layout({
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           className="focus:outline-none border-2 border-blue-400 rounded px-2 w-64"
+          onKeyDown={e => e.key === "Enter" && hanldeSearch()}
         />
         <button onClick={hanldeSearch}>
           <FaSearch className="w-10 h-10 p-2" />

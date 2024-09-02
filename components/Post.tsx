@@ -35,7 +35,7 @@ const Post = ({
             </div>
           </Link>
           <Link href={`/post/${postID}`}>
-            <p className="mt-2 text-gray-800">{text}</p>
+            <pre className="mt-2 text-gray-800">{text}</pre>
             {image && (
               <img src={image} alt="Post content" className="mt-4 rounded-lg" />
             )}
