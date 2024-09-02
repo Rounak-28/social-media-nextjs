@@ -1,4 +1,5 @@
 import Post from "@/components/Post";
+import { currentUser } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
@@ -15,6 +16,7 @@ async function getData(username: string) {
 
 const Page = async ({ params }: { params: { username: string } }) => {
   const data = await getData(params.username);
+  const user = await currentUser();
   return (
     <div className="min-h-screen">
       <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2">
@@ -44,16 +46,24 @@ const Page = async ({ params }: { params: { username: string } }) => {
             className="rounded-full border-4 border-black h-24 w-24 object-cover"
           />
         </div>
-        <div className="ml-28 pt-4">
-          <h1 className="text-2xl font-bold">
+        <div className="w-full h-12"></div>
+        <div className="mr-28 pt-2">
+          <h1 className="text-xl font-bold">
             {data.firstname} {data.lastname}
           </h1>
           <p className="text-gray-400">@{data.username}</p>
-          {/* <p className="mt-2">In the arena trying stuff</p> */}
-          {/* <div className="flex mt-2">
-            <span className="mr-4">115 Following</span>
-            <span>64 Followers</span>
-          </div> */}
+          <p className="mt-2">In the arena trying stuff</p>
+          <div className="flex mt-2">
+            <span className="mr-4">42 Following</span>
+            <span>42 Followers</span>
+          </div>
+        </div>
+        <div className="w-28 h-12 absolute right-2 top-16 border border-gray-300 flex justify-center items-center rounded-full">
+          {params.username === user?.username ? (
+            <p>Edit Profile</p>
+          ) : (
+            <p>Follow</p>
+          )}
         </div>
       </div>
 
