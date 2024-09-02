@@ -30,7 +30,7 @@ export default async function Home() {
         />
       ))}
       {/* just giving some margin at the bottom hehe */}
-      <div className="h-12"></div>
+      <div className="h-16"></div>
     </div>
   );
 }

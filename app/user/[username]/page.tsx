@@ -77,7 +77,7 @@ const Page = async ({ params }: { params: { username: string } }) => {
         />
       ))}
       {/* just giving some margin at the bottom hehe */}
-      <div className="h-10"></div>
+      <div className="h-16"></div>
     </div>
   );
 };

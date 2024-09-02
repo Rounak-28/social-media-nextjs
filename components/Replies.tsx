@@ -2,7 +2,7 @@ import React from 'react';
 
 const Replies = ({ author, text, time }: any) => {
   return (
-    <div className="flex items-start p-4 border-b border-gray-200">
+    <div className="flex items-start p-4 m-2 border shadow-sm rounded-md border-gray-400">
       {/* Profile Picture */}
       <div className="mr-4">
         <img

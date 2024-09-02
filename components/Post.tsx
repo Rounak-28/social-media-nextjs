@@ -14,7 +14,7 @@ const Post = ({
     addSuffix: true,
   });
   return (
-    <div className="max-w-xl mx-auto p-4 bg-white border border-gray-300 rounded-lg shadow-sm">
+    <div className="max-w-xl p-4 m-2 md:mx-auto bg-white border border-gray-300 rounded-lg shadow-sm">
       <div className="flex items-start">
         <Link href={`/user/${userName}`}>
           <img
