@@ -1,13 +1,16 @@
+import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
 const SearchTerm = ({ text }: { text: string }) => {
   return (
-    <div className="flex items-center space-x-4 h-12 px-4 relative border-b">
-      <FaSearch className="text-2xl" />
-      <span>{text}</span>
-      <IoMdClose className="text-3xl absolute right-3" />
-    </div>
+    <Link href={`/search/${text}`}>
+      <div className="flex items-center space-x-4 h-12 px-4 relative border-b">
+        <FaSearch className="text-2xl" />
+        <span>{text}</span>
+        <IoMdClose className="text-3xl absolute right-3" />
+      </div>
+    </Link>
   );
 };
 

@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: { query: string } }) {
   return (
     <>
       <div className="peoples px-4">
-        <p className="text-lg font-semibold">People</p>
+        <p className="text-lg font-semibold">Users</p>
         {data.users.map((user: any) => (
           <User
             firstname={user.firstname}
@@ -28,13 +28,13 @@ export default async function Page({ params }: { params: { query: string } }) {
             key={user.id}
           />
         ))}
-        <button className="text-blue-600 text-lg px-2 py-1 mx-2">
-          View all
-        </button>
+        {data.users.length == 0 && (
+          <p className="text-gray-700">No user found</p>
+        )}
       </div>
       <hr />
-      <div className="posts px-2 py-1">
-        <p className="text-lg font-semibold px-2">Posts</p>
+      <div className="posts px-4 py-1">
+        <p className="text-lg font-semibold">Posts</p>
         <div className="posts space-y-2">
           {data.posts.map((post: any) => (
             <Post
@@ -48,6 +48,9 @@ export default async function Page({ params }: { params: { query: string } }) {
               key={post.id}
             />
           ))}
+          {data.posts.length == 0 && (
+            <p className="text-gray-700">No post found</p>
+          )}
           <div className="h-14"></div>
         </div>
       </div>
