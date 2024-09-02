@@ -70,7 +70,7 @@ const Page = async ({ params }: { params: { username: string } }) => {
           profileName={`${data.firstname} ${data.lastname}`}
           userName={data.username}
           createdAt={post.createdAt}
-          content={post.text}
+          text={post.text}
           avatar={data.avatar}
           postID={post.id}
           key={post.id}

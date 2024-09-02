@@ -5,7 +5,7 @@ const Post = ({
   profileName,
   userName,
   createdAt,
-  content,
+  text,
   avatar,
   image,
   postID,
@@ -35,7 +35,7 @@ const Post = ({
             </div>
           </Link>
           <Link href={`/post/${postID}`}>
-            <p className="mt-2 text-gray-800">{content}</p>
+            <p className="mt-2 text-gray-800">{text}</p>
             {image && (
               <img src={image} alt="Post content" className="mt-4 rounded-lg" />
             )}

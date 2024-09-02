@@ -23,7 +23,7 @@ export default async function Home() {
           profileName={`${post.author.firstname} ${post.author.lastname}`}
           userName={post.author.username}
           createdAt={post.createdAt}
-          content={post.text}
+          text={post.text}
           avatar={post.author.avatar}
           postID={post.id}
           key={post.id}
