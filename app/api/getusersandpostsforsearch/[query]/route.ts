@@ -8,6 +8,9 @@ export async function GET(
   const query = params.query.split(" ").join(" | ");
 
   const posts = await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
     where: {
       OR: [
         { text: { search: query } },
