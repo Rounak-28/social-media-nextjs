@@ -41,10 +41,11 @@ export default function Layout({
           className="w-80 h-10 outline outline-1 outline-gray-300 rounded-md px-2"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          // onKeyDown={(e) => e.key === "Enter" && handleReply()}
         />
         <button
           className="text-3xl px-2 py-1 disabled:text-gray-400"
-          disabled={isPosting}
+          disabled={isPosting || text.trim() == ""}
           onClick={handleReply}
         >
           <IoMdSend />
