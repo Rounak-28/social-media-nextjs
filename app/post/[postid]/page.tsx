@@ -24,8 +24,11 @@ async function getReplies(parentPostId: string) {
 }
 
 export default async function Page({ params }: { params: { postid: string } }) {
-  const post = await getPost(params.postid);
-  const replies = await getReplies(params.postid)
+
+  const postData = getPost(params.postid);
+  const repliesData = getReplies(params.postid);
+  const [post, replies] = await Promise.all([postData, repliesData])
+  
   // console.log(replies);
   return (
     <div>
@@ -45,6 +48,9 @@ export default async function Page({ params }: { params: { postid: string } }) {
         id={post.id}
       />
       <div className="text-center p-2">Replies</div>
+      {replies.length == 0 && (
+        <p className="text-center text-sm text-gray-600">No replies yet...</p>
+      )}
       <div className="max-w-xl mx-auto">
         {replies.map((reply: any) => (
           <Post
