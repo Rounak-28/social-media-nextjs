@@ -19,7 +19,7 @@ const Page = async ({ params }: { params: { username: string } }) => {
   const user = await currentUser();
   return (
     <div className="min-h-screen">
-      <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2">
+      <div className="h-12 flex items-center px-2 border-b border-gray-300 bg-white space-x-2 sticky top-0 z-50">
         <Link href={"/"}>
           <FaArrowLeft className="w-10 h-10 p-2" />
         </Link>
