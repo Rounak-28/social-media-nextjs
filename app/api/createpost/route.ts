@@ -9,7 +9,8 @@ export async function POST(request: NextRequest) {
   const imagePost = await prisma.post.create({
     data: {
         text: req.text,
-        authorUserName: user?.username!
+        authorUserName: user?.username!,
+        parentPostId: Number(req.parentPostId)
     }
   });
 

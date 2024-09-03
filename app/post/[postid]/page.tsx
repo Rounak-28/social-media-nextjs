@@ -2,9 +2,8 @@ import Post from "@/components/Post";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
 
-async function getData(postid: string) {
+async function getPost(postid: string) {
   const host = headers().get("host");
   const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
 
@@ -14,30 +13,20 @@ async function getData(postid: string) {
   return response.json();
 }
 
-const replies = [
-  {
-    firstname: "John",
-    lastname: "Doe",
-    username: "john_doe",
-    text: "This is a great post! Thanks for sharing.",
-    createdAt: "2024-08-31T13:45:49.412Z",
-    avatar: "http://via.placeholder.com/200",
-    id: 1,
-  },
-  {
-    firstname: "Jane",
-    lastname: "Smith",
-    username: "jane_smith",
-    text: "I found this really helpful, looking forward to more!",
-    createdAt: "2024-08-31T13:45:49.412Z",
-    avatar: "http://via.placeholder.com/200",
-    id: 2,
-  },
-];
+async function getReplies(parentPostId: string) {
+  const host = headers().get("host");
+  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
+
+  const response = await fetch(
+    `${protocal}://${host}/api/getreplies/${parentPostId}`
+  );
+  return response.json();
+}
 
 export default async function Page({ params }: { params: { postid: string } }) {
-  const post = await getData(params.postid);
-  // console.log(data);
+  const post = await getPost(params.postid);
+  const replies = await getReplies(params.postid)
+  // console.log(replies);
   return (
     <div>
       <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2 sticky top-0 bg-white">
@@ -59,26 +48,16 @@ export default async function Page({ params }: { params: { postid: string } }) {
       <div className="max-w-xl mx-auto">
         {replies.map((reply: any) => (
           <Post
-            firstname={reply.firstname}
-            lastname={reply.lastname}
-            username={reply.username}
+            firstname={reply.author.firstname}
+            lastname={reply.author.lastname}
+            username={reply.author.username}
             createdAt={reply.createdAt}
             text={reply.text}
-            avatar={reply.avatar}
+            avatar={reply.author.avatar}
             id={reply.id}
             key={reply.id}
           />
         ))}
-      </div>
-      <div className="bg-white h-16 w-full fixed bottom-16 border-t border-green-600 flex items-center justify-between px-2">
-        <input
-          type="text"
-          className="w-80 h-10 outline outline-1 outline-gray-300 rounded-md px-2"
-          placeholder="Post your reply"
-        />
-        <button className="text-3xl px-2 py-1">
-          <IoMdSend />
-        </button>
       </div>
       {/* just giving some margin at the bottom hehe */}
       <div className="h-32"></div>
