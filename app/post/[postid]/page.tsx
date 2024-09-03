@@ -1,8 +1,8 @@
 import Post from "@/components/Post";
-import Replies from "@/components/Replies";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
+import { IoMdSend } from "react-icons/io";
 
 async function getData(postid: string) {
   const host = headers().get("host");
@@ -16,14 +16,22 @@ async function getData(postid: string) {
 
 const replies = [
   {
-    author: "John Doe",
+    firstname: "John",
+    lastname: "Doe",
+    username: "john_doe",
     text: "This is a great post! Thanks for sharing.",
-    time: "2 hours ago",
+    createdAt: "2024-08-31T13:45:49.412Z",
+    avatar: "http://via.placeholder.com/200",
+    id: 1,
   },
   {
-    author: "Jane Smith",
+    firstname: "Jane",
+    lastname: "Smith",
+    username: "jane_smith",
     text: "I found this really helpful, looking forward to more!",
-    time: "1 hour ago",
+    createdAt: "2024-08-31T13:45:49.412Z",
+    avatar: "http://via.placeholder.com/200",
+    id: 2,
   },
 ];
 
@@ -32,7 +40,7 @@ export default async function Page({ params }: { params: { postid: string } }) {
   // console.log(data);
   return (
     <div>
-      <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2">
+      <div className="h-12 flex items-center px-2 border-b border-gray-300 space-x-2 sticky top-0 bg-white">
         <Link href={"/"}>
           <FaArrowLeft className="w-10 h-10 p-2" />
         </Link>
@@ -49,17 +57,30 @@ export default async function Page({ params }: { params: { postid: string } }) {
       />
       <div className="text-center p-2">Replies</div>
       <div className="max-w-xl mx-auto">
-        {replies.map((replies, index) => (
-          <Replies
-            key={index}
-            author={replies.author}
-            text={replies.text}
-            time={replies.time}
+        {replies.map((reply: any) => (
+          <Post
+            firstname={reply.firstname}
+            lastname={reply.lastname}
+            username={reply.username}
+            createdAt={reply.createdAt}
+            text={reply.text}
+            avatar={reply.avatar}
+            id={reply.id}
           />
         ))}
       </div>
+      <div className="bg-white h-16 w-full fixed bottom-16 border-t border-green-600 flex items-center justify-between px-2">
+        <input
+          type="text"
+          className="w-80 h-10 outline outline-1 outline-gray-300 rounded-md px-2"
+          placeholder="Post your reply"
+        />
+        <button className="text-3xl px-2 py-1">
+          <IoMdSend />
+        </button>
+      </div>
       {/* just giving some margin at the bottom hehe */}
-      <div className="h-14"></div>
+      <div className="h-32"></div>
     </div>
   );
 }

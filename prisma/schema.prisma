@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
 }
 
@@ -21,6 +21,9 @@ model Post {
   text           String   @db.VarChar(255)
   author         User     @relation(fields: [authorUserName], references: [username])
   authorUserName String
+  parentPostId   Int? // This will be the foreign key for the parent post
+  parent         Post?    @relation("Replies", fields: [parentPostId], references: [id]) // Parent post relation
+  children       Post[]   @relation("Replies") // Child posts relation
 }
 
 model User {
