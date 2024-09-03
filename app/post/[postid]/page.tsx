@@ -66,6 +66,7 @@ export default async function Page({ params }: { params: { postid: string } }) {
             text={reply.text}
             avatar={reply.avatar}
             id={reply.id}
+            key={reply.id}
           />
         ))}
       </div>
