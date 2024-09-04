@@ -26,6 +26,7 @@ export default async function Home() {
           createdAt={post.createdAt}
           text={post.text}
           avatar={post.author.avatar}
+          replyCount={post._count.children}
           id={post.id}
           key={post.id}
         />

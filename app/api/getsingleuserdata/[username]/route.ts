@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
@@ -15,6 +15,13 @@ export async function GET(
       posts: {
         orderBy: {
           createdAt: "desc",
+        },
+        include: {
+          _count: {
+            select: {
+              children: true,
+            },
+          },
         },
       },
     },

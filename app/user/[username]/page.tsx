@@ -83,6 +83,7 @@ const Page = async ({ params }: { params: { username: string } }) => {
           createdAt={post.createdAt}
           text={post.text}
           avatar={data.avatar}
+          replyCount={post._count.children}
           id={post.id}
           key={post.id}
         />

@@ -11,6 +11,11 @@ export async function GET(
     },
     include: {
       author: true,
+      _count: {
+        select: {
+          children: true,
+        },
+      },
     },
   });
 

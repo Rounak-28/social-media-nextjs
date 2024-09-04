@@ -9,6 +9,7 @@ const Post = ({
   text,
   avatar,
   image,
+  replyCount,
   id,
 }: any) => {
   const time = formatDistance(new Date(createdAt), new Date(), {
@@ -37,6 +38,7 @@ const Post = ({
           </Link>
           <Link href={`/post/${id}`}>
             <p className="whitespace-pre-wrap mt-2 text-gray-800">{text}</p>
+            <p className="text-sm text-gray-500 pt-1">{replyCount} Replies</p>
             {image && (
               <img src={image} alt="Post content" className="mt-4 rounded-lg" />
             )}

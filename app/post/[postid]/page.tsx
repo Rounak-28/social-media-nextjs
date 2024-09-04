@@ -24,11 +24,10 @@ async function getReplies(parentPostId: string) {
 }
 
 export default async function Page({ params }: { params: { postid: string } }) {
-
   const postData = getPost(params.postid);
   const repliesData = getReplies(params.postid);
-  const [post, replies] = await Promise.all([postData, repliesData])
-  
+  const [post, replies] = await Promise.all([postData, repliesData]);
+
   // console.log(replies);
   return (
     <div>
@@ -45,6 +44,7 @@ export default async function Page({ params }: { params: { postid: string } }) {
         createdAt={post.createdAt}
         text={post.text}
         avatar={post.author.avatar}
+        replyCount={post._count.children}
         id={post.id}
       />
       <div className="text-center p-2">Replies</div>
@@ -60,6 +60,7 @@ export default async function Page({ params }: { params: { postid: string } }) {
             createdAt={reply.createdAt}
             text={reply.text}
             avatar={reply.author.avatar}
+            replyCount={reply._count.children}
             id={reply.id}
             key={reply.id}
           />

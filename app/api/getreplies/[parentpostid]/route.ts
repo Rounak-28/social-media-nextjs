@@ -16,6 +16,11 @@ export async function GET(
     },
     include: {
       author: true,
+      _count: {
+        select: {
+          children: true,
+        },
+      },
     },
   });
   return NextResponse.json(data, { status: 200 });
