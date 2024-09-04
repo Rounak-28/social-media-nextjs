@@ -25,6 +25,7 @@ const Page = async ({ params }: { params: { username: string } }) => {
           text={post.text}
           avatar={data.avatar}
           replyCount={post._count.children}
+          likeCount={post._count.likedBy}
           id={post.id}
           key={post.id}
         />

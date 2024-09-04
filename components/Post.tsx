@@ -11,6 +11,7 @@ const Post = ({
   avatar,
   image,
   replyCount,
+  likeCount,
   id,
 }: any) => {
   const time = formatDistance(new Date(createdAt), new Date(), {
@@ -75,7 +76,7 @@ const Post = ({
             {/* TODO: add like functionality */}
             <div className="likecount flex items-center space-x-1">
               <FaRegHeart />
-              <span>0</span>
+              <span>{likeCount}</span>
             </div>
           </div>
         </div>

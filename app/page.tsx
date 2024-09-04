@@ -27,6 +27,7 @@ export default async function Home() {
           text={post.text}
           avatar={post.author.avatar}
           replyCount={post._count.children}
+          likeCount={post._count.likedBy}
           id={post.id}
           key={post.id}
         />

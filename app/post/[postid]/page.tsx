@@ -45,6 +45,7 @@ export default async function Page({ params }: { params: { postid: string } }) {
         text={post.text}
         avatar={post.author.avatar}
         replyCount={post._count.children}
+        likeCount={post._count.likedBy}
         id={post.id}
       />
       <div className="text-center p-2">Replies</div>
@@ -61,6 +62,7 @@ export default async function Page({ params }: { params: { postid: string } }) {
             text={reply.text}
             avatar={reply.author.avatar}
             replyCount={reply._count.children}
+            likeCount={reply._count.likedBy}
             id={reply.id}
             key={reply.id}
           />

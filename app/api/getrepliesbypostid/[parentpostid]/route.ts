@@ -16,9 +16,11 @@ export async function GET(
     },
     include: {
       author: true,
+      likedBy: true,
       _count: {
         select: {
           children: true,
+          likedBy: true,
         },
       },
     },

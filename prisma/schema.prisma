@@ -24,13 +24,15 @@ model Post {
   parentPostId   Int? // This will be the foreign key for the parent post
   parent         Post?    @relation("Replies", fields: [parentPostId], references: [id]) // Parent post relation
   children       Post[]   @relation("Replies") // Child posts relation
+  likedBy        User[]   @relation("PostLikes")
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  username  String @unique
-  firstname String
-  lastname  String
-  avatar    String
-  posts     Post[]
+  id         Int    @id @default(autoincrement())
+  username   String @unique
+  firstname  String
+  lastname   String
+  avatar     String
+  posts      Post[]
+  likedPosts Post[] @relation("PostLikes")
 }

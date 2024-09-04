@@ -45,6 +45,7 @@ export default async function Page({ params }: { params: { query: string } }) {
               text={post.text}
               avatar={post.author.avatar}
               replyCount={post._count.children}
+              likeCount={post._count.likedBy}
               id={post.id}
               key={post.id}
             />

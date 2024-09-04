@@ -20,9 +20,11 @@ export async function GET(
           parentPostId: null,
         },
         include: {
+          likedBy: true,
           _count: {
             select: {
               children: true,
+              likedBy: true,
             },
           },
         },
