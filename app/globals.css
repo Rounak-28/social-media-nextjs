@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-/* changing username  will create complication in backend, so hiding change username button */
+/* changing username will create complication in backend, so hiding change username button */
 .cl-profileSectionPrimaryButton {
     display: none;
 }

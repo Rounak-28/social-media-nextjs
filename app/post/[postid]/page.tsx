@@ -5,20 +5,20 @@ import { FaArrowLeft } from "react-icons/fa";
 
 async function getPost(postid: string) {
   const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
+  const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
 
   const response = await fetch(
-    `${protocal}://${host}/api/getsinglepost/${postid}`
+    `${protocol}://${host}/api/getsinglepost/${postid}`
   );
   return response.json();
 }
 
 async function getReplies(parentPostId: string) {
   const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
+  const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
 
   const response = await fetch(
-    `${protocal}://${host}/api/getreplies/${parentPostId}`
+    `${protocol}://${host}/api/getrepliesbypostid/${parentPostId}`
   );
   return response.json();
 }

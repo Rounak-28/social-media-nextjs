@@ -6,30 +6,28 @@ async function getData(username: string) {
   const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
 
   const response = await fetch(
-    `${protocol}://${host}/api/getsingleuserdata/${username}`
+    `${protocol}://${host}/api/getrepliesbyuser/${username}`
   );
   return response.json();
 }
 
 const Page = async ({ params }: { params: { username: string } }) => {
-  const data = await getData(params.username);
-
+  const replies = await getData(params.username);
   return (
     <div className="min-h-screen">
-      {data.posts.map((post: any) => (
+      {replies.map((reply: any) => (
         <Post
-          firstname={data.firstname}
-          lastname={data.lastname}
-          username={data.username}
-          createdAt={post.createdAt}
-          text={post.text}
-          avatar={data.avatar}
-          replyCount={post._count.children}
-          id={post.id}
-          key={post.id}
+          firstname={reply.author.firstname}
+          lastname={reply.author.lastname}
+          username={reply.author.username}
+          createdAt={reply.createdAt}
+          text={reply.text}
+          avatar={reply.author.avatar}
+          replyCount={reply._count.children}
+          id={reply.id}
+          key={reply.id}
         />
       ))}
-      {/* just giving some margin at the bottom hehe */}
       <div className="h-16"></div>
     </div>
   );

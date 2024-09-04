@@ -5,9 +5,9 @@ import { headers } from "next/headers";
 
 async function getData() {
   const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
+  const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
 
-  const response = await fetch(`${protocal}://${host}/api/getallposts`);
+  const response = await fetch(`${protocol}://${host}/api/getallposts`);
   return response.json();
 }
 

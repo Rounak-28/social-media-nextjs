@@ -4,10 +4,10 @@ import { headers } from "next/headers";
 
 async function getData(query: string) {
   const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
+  const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
 
   const response = await fetch(
-    `${protocal}://${host}/api/getusersandpostsforsearch/${query}`
+    `${protocol}://${host}/api/getusersandpostsforsearch/${query}`
   );
   return response.json();
 }

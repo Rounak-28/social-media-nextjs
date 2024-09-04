@@ -7,28 +7,24 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { username: string } }
 ) {
-  const data = await prisma.user.findUnique({
+  const data = await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
     where: {
-      username: params.username,
+      authorUserName: params.username,
+      parentPostId: {
+        not: null,
+      },
     },
     include: {
-      posts: {
-        orderBy: {
-          createdAt: "desc",
-        },
-        where: {
-          parentPostId: null,
-        },
-        include: {
-          _count: {
-            select: {
-              children: true,
-            },
-          },
+      author: true,
+      _count: {
+        select: {
+          children: true,
         },
       },
     },
   });
-
   return NextResponse.json(data, { status: 200 });
 }
