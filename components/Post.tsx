@@ -72,6 +72,7 @@ const Post = ({
                 <span>{replyCount}</span>
               </div>
             </Link>
+            {/* TODO: add like functionality */}
             <div className="likecount flex items-center space-x-1">
               <FaRegHeart />
               <span>0</span>
