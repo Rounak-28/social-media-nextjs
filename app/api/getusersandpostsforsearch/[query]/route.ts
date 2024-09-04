@@ -22,6 +22,7 @@ export async function GET(
           },
         },
       ],
+      parentPostId: null,
     },
     include: {
       author: true,

@@ -17,7 +17,7 @@ export default function Layout({
   };
   return (
     <>
-      <div className="flex justify-between h-14 p-2 border-b border-gray-300 bg-white sticky top-0">
+      <div className="flex justify-between w-full h-14 p-2 border-b border-gray-300 bg-white fixed top-0">
         <FaArrowLeft className="w-10 h-10 p-2" onClick={router.back} />
         <input
           type="text"
@@ -31,6 +31,7 @@ export default function Layout({
           <FaSearch className="w-10 h-10 p-2" />
         </button>
       </div>
+      <div className="h-14 bg-gray-500"></div>
       {children}
     </>
   );
