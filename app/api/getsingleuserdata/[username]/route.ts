@@ -20,7 +20,7 @@ export async function GET(
           parentPostId: null,
         },
         include: {
-          likedBy: true,
+          likedBy: false,
           _count: {
             select: {
               children: true,

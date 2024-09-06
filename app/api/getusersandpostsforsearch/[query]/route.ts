@@ -26,7 +26,7 @@ export async function GET(
     },
     include: {
       author: true,
-      likedBy: true,
+      likedBy: false,
       _count: {
         select: {
           children: true,
