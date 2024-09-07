@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
@@ -14,16 +17,16 @@ const SearchTerm = ({ text }: { text: string }) => {
   );
 };
 
-let searchTerms: any;
-searchTerms = [
-  "Search Term 1",
-  "Search Term 2",
-  "Search Term 3",
-  "Search Term 4",
-  "Search Term 5",
-];
-
 const Page = () => {
+  const [searchTerms, setSearchTerms] = useState<string[]>([]);
+
+  useEffect(() => {
+    const storedSearchTerms = localStorage.getItem("searchTerms");
+    if (storedSearchTerms) {
+      setSearchTerms(JSON.parse(storedSearchTerms));
+    }
+  }, []);
+
   return (
     <>
       <p className="px-4 py-2 text-lg font-semibold">Recent</p>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaArrowLeft, FaSearch } from "react-icons/fa";
 
 export default function Layout({
@@ -11,9 +11,21 @@ export default function Layout({
 }>) {
   const router = useRouter();
   const [searchText, setSearchText] = useState("");
+  const [searchTerms, setSearchTerms] = useState<string[]>([]);
+
+  useEffect(() => {
+    const storedSearchTerms = localStorage.getItem("searchTerms");
+    if (storedSearchTerms) {
+      setSearchTerms(JSON.parse(storedSearchTerms));
+    }
+  }, []);
 
   const hanldeSearch = () => {
     router.push(`/search/${searchText}`);
+
+    const updatedSearchTerms = [searchText, ...searchTerms].slice(0, 5); // Limit to 5 recent searches
+    setSearchTerms(updatedSearchTerms);
+    localStorage.setItem("searchTerms", JSON.stringify(updatedSearchTerms));
   };
   return (
     <>
