@@ -23,6 +23,8 @@ export default function Layout({
   const handleSearch = () => {
     if (!searchText.trim()) return;
     router.push(`/search/${searchText}`);
+
+    // Dont allow duplicate terms
     const updatedSearchTerms = searchTerms.filter(
       (term) => term.toLowerCase() !== searchText.toLowerCase()
     );

@@ -44,7 +44,7 @@ const Page = () => {
     <>
       <p className="px-4 py-2 text-lg font-semibold">Recent</p>
       {searchTerms.length ? (
-        searchTerms.map((term: string, index: number) => (
+        searchTerms.map((term: string) => (
           <SearchTerm
             text={term}
             removeSearchTerm={removeSearchTerm}
