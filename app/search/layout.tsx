@@ -20,12 +20,16 @@ export default function Layout({
     }
   }, []);
 
-  const hanldeSearch = () => {
+  const handleSearch = () => {
+    if (!searchText.trim()) return;
     router.push(`/search/${searchText}`);
-
-    const updatedSearchTerms = [searchText, ...searchTerms].slice(0, 5); // Limit to 5 recent searches
-    setSearchTerms(updatedSearchTerms);
-    localStorage.setItem("searchTerms", JSON.stringify(updatedSearchTerms));
+    const updatedSearchTerms = searchTerms.filter(
+      (term) => term.toLowerCase() !== searchText.toLowerCase()
+    );
+    updatedSearchTerms.unshift(searchText); // Add the new search term at the beginning
+    const limitedSearchTerms = updatedSearchTerms.slice(0, 5); // Limit to 5 recent searches
+    setSearchTerms(limitedSearchTerms);
+    localStorage.setItem("searchTerms", JSON.stringify(limitedSearchTerms));
   };
   return (
     <>
@@ -37,9 +41,9 @@ export default function Layout({
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           className="focus:outline-none border-2 border-blue-400 rounded px-2 w-64"
-          onKeyDown={(e) => e.key === "Enter" && hanldeSearch()}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
-        <button onClick={hanldeSearch}>
+        <button onClick={handleSearch}>
           <FaSearch className="w-10 h-10 p-2" />
         </button>
       </div>

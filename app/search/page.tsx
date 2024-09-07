@@ -5,20 +5,33 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
-const SearchTerm = ({ text }: { text: string }) => {
+interface SearchTermtypes {
+  text: string;
+  removeSearchTerm: (text: string) => void;
+}
+
+const SearchTerm = ({ text, removeSearchTerm }: SearchTermtypes) => {
   return (
-    <Link href={`/search/${text}`}>
-      <div className="flex items-center space-x-4 h-12 px-4 relative border-b">
+    <div className="flex items-center justify-between space-x-4 h-12 px-4 mb-3 relative border-b border-gray-300">
+      <Link href={`/search/${text}`} className="w-full py-1 flex space-x-4">
         <FaSearch className="text-2xl" />
         <span>{text}</span>
-        <IoMdClose className="text-3xl absolute right-3" />
-      </div>
-    </Link>
+      </Link>
+      <button className="text-3xl" onClick={() => removeSearchTerm(text)}>
+        <IoMdClose />
+      </button>
+    </div>
   );
 };
 
 const Page = () => {
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
+
+  const removeSearchTerm = (text: string) => {
+    const updatedSearchTerms = searchTerms.filter((term) => term !== text);
+    setSearchTerms(updatedSearchTerms);
+    localStorage.setItem("searchTerms", JSON.stringify(updatedSearchTerms));
+  };
 
   useEffect(() => {
     const storedSearchTerms = localStorage.getItem("searchTerms");
@@ -30,12 +43,16 @@ const Page = () => {
   return (
     <>
       <p className="px-4 py-2 text-lg font-semibold">Recent</p>
-      {searchTerms ? (
+      {searchTerms.length ? (
         searchTerms.map((term: string, index: number) => (
-          <SearchTerm text={term} key={index} />
+          <SearchTerm
+            text={term}
+            removeSearchTerm={removeSearchTerm}
+            key={term}
+          />
         ))
       ) : (
-        <p>try searching for people or keywords</p>
+        <p className="text-center">try searching for people or keywords</p>
       )}
     </>
   );
